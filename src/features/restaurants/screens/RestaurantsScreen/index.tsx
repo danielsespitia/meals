@@ -1,6 +1,6 @@
 // Packages
 import React, { FC, useState } from 'react';
-import { SafeAreaView, StatusBar, Platform } from 'react-native';
+import { SafeAreaView, StatusBar } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import styled from 'styled-components/native';
 
