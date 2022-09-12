@@ -1,33 +1,16 @@
 // Packages
-import React, { FC, useState } from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
-import { Searchbar } from 'react-native-paper';
-import styled from 'styled-components/native';
+import React, { FC } from 'react';
 
 // Components
-import { RestaurantInfoCard } from '../../components';
+import { RestaurantInfoCard, MySearchbar } from '../../components';
 
-const SafeAreaContainer = styled(SafeAreaView)`
-  flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`}
-`;
-
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
-
-const List = styled.View`
-  flex: 1;
-  padding: ${(props) => props.theme.space[3]};
-`;
+// Styles
+import { SafeAreaContainer, List } from './styles';
 
 export const RestaurantsScreen: FC = () => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const onChangeSearch = (query: string) => setSearchQuery(query);
-
   const mockRestaurant = {
     name: 'Some restaurant',
-    icon: null,
+    icon: 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png',
     photos: [
       'https://www.collinsdictionary.com/images/full/restaurant_135621509.jpg',
     ],
@@ -39,13 +22,7 @@ export const RestaurantsScreen: FC = () => {
 
   return (
     <SafeAreaContainer>
-      <SearchContainer>
-        <Searchbar
-          placeholder="Search"
-          onChangeText={onChangeSearch}
-          value={searchQuery}
-        />
-      </SearchContainer>
+      <MySearchbar />
       <List>
         <RestaurantInfoCard restaurant={mockRestaurant} />
       </List>
