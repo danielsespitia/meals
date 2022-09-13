@@ -16,7 +16,8 @@ import {
   open,
   star,
 } from './styles';
-import { Spacer } from '../../../../components/Spacer';
+import { Spacer } from '../../../../components';
+import { Text } from '../../../../components';
 
 // Definitions
 import { IRestaurant } from '../../types';
@@ -42,7 +43,7 @@ export const RestaurantInfoCard: FC<IRestaurantInfoCard> = ({ restaurant }) => {
     <Card elevation={5}>
       <Cover key={name} source={{ uri: `${photos[0]}` }} />
       <Info>
-        <Title>{name}</Title>
+        <Text variant="label">{name}</Text>
         <IconsContainer>
           <Rating>
             {!!ratingArray &&
@@ -51,7 +52,9 @@ export const RestaurantInfoCard: FC<IRestaurantInfoCard> = ({ restaurant }) => {
               ))}
           </Rating>
           <OpeningTimes>
-            {isClosedTemporarily && <Title>CLOSED TEMPORARILY</Title>}
+            {isClosedTemporarily && (
+              <Text variant="error">CLOSED TEMPORARILY</Text>
+            )}
             <Spacer position="left" size="large">
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>

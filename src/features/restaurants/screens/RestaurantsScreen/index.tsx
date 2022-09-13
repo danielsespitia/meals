@@ -4,6 +4,9 @@ import React, { FC } from 'react';
 // Components
 import { RestaurantInfoCard, MySearchbar } from '../../components';
 
+// Definitions
+import { IRestaurant } from '../../types';
+
 // Styles
 import { SafeAreaContainer, List } from './styles';
 
@@ -23,9 +26,11 @@ export const RestaurantsScreen: FC = () => {
   return (
     <SafeAreaContainer>
       <MySearchbar />
-      <List>
-        <RestaurantInfoCard restaurant={mockRestaurant} />
-      </List>
+      <List
+        data={[{ name: 1 }, { name: 2 }]}
+        renderItem={() => <RestaurantInfoCard restaurant={mockRestaurant} />}
+        keyExtractor={(item: IRestaurant) => Number(item.name)}
+      ></List>
     </SafeAreaContainer>
   );
 };

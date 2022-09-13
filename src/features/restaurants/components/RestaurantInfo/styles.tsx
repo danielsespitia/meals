@@ -4,6 +4,7 @@ import { Card as PaperCard } from 'react-native-paper';
 
 export const Card = styled(PaperCard)`
   background-color: ${(props) => props.theme.colors.bg.primary};
+  margin-bottom: ${(props) => props.theme.space[3]};
 `;
 
 export const Cover = styled(PaperCard.Cover)`

@@ -1,5 +1,5 @@
 // Packages
-import { SafeAreaView, StatusBar } from 'react-native';
+import { SafeAreaView, StatusBar, FlatList } from 'react-native';
 import styled from 'styled-components/native';
 
 export const SafeAreaContainer = styled(SafeAreaView)`
@@ -7,7 +7,10 @@ export const SafeAreaContainer = styled(SafeAreaView)`
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`}
 `;
 
-export const List = styled.View`
+export const List = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 16,
+  },
+})`
   flex: 1;
-  padding: ${(props) => props.theme.space[3]};
 `;
