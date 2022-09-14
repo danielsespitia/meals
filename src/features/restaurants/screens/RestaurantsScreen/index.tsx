@@ -1,36 +1,51 @@
 // Packages
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
+import { ActivityIndicator, Colors } from 'react-native-paper';
+import { View, FlatList, ListRenderItem } from 'react-native';
 
 // Components
 import { RestaurantInfoCard, MySearchbar } from '../../components';
+
+// Context
+import { RestaurantsContext } from '../../../../services/restaurants/restaurants.context';
 
 // Definitions
 import { IRestaurant } from '../../types';
 
 // Styles
-import { SafeAreaContainer, List } from './styles';
+import { SafeAreaContainer } from './styles';
+import { colors } from '../../../../infrastructure/theme/colors';
 
 export const RestaurantsScreen: FC = () => {
-  const mockRestaurant = {
-    name: 'Some restaurant',
-    icon: 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png',
-    photos: [
-      'https://www.collinsdictionary.com/images/full/restaurant_135621509.jpg',
-    ],
-    address: '100 some random street',
-    isOpenNow: true,
-    rating: 4,
-    isClosedTemporarily: true,
-  };
+  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+
+  const renderItem: ListRenderItem<IRestaurant> = ({ item }) => (
+    <RestaurantInfoCard restaurant={item} />
+  );
 
   return (
     <SafeAreaContainer>
-      <MySearchbar />
-      <List
-        data={[{ name: 1 }, { name: 2 }]}
-        renderItem={() => <RestaurantInfoCard restaurant={mockRestaurant} />}
-        keyExtractor={(item: IRestaurant) => Number(item.name)}
-      ></List>
+      {isLoading ? (
+        // Refactor to styled component
+        <View style={{ position: 'absolute', top: '50%', left: '50%' }}>
+          <ActivityIndicator
+            size={50}
+            style={{ marginLeft: -25 }}
+            animating={true}
+            color={Colors.blue300}
+          />
+        </View>
+      ) : (
+        <>
+          <MySearchbar />
+          <FlatList
+            data={restaurants}
+            renderItem={renderItem}
+            keyExtractor={(item: IRestaurant) => item.name}
+            contentContainerStyle={{ padding: 16 }}
+          />
+        </>
+      )}
     </SafeAreaContainer>
   );
 };
