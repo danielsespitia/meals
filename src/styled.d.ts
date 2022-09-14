@@ -1,7 +1,7 @@
-import 'styled-components';
+import 'styled-components/native';
 
 // TODO: Declare types for theme
-declare module 'styled-components' {
+declare module 'styled-components/native' {
   interface IColors {
     brand: {
       primary: string;
@@ -81,7 +81,7 @@ declare module 'styled-components' {
     h1: string;
   }
 
-  export interface DefaultTheme {
+  export interface IMyTheme {
     colors: IColors;
     space: TSpace;
     lineHeights: ILineHeights;

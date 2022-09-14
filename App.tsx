@@ -44,12 +44,12 @@ export default function App() {
     return null;
   }
 
+  // TODO: Types ????????
   const createScreenOptions = ({ route }) => {
     const iconName = TAB_ICON[route.name] as string;
 
     return {
       tabBarIcon: ({ size, color }) => (
-        // TODO: Type name ????????
         <Ionicons name={iconName} size={size} color={color} />
       ),
       headerShown: false,
@@ -79,6 +79,7 @@ export default function App() {
           <NavigationContainer>
             <Tab.Navigator
               screenOptions={createScreenOptions}
+              // TODO: How to put tabBarOptions into screenOptions?
               tabBarOptions={{
                 activeTintColor: 'tomato',
                 inactiveTintColor: 'gray',
