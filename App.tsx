@@ -14,6 +14,7 @@ import { RestaurantsScreen } from './src/features/restaurants';
 
 // Context
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context';
+import { LocationContextProvider } from './src/services/location/location.context';
 
 // Theme
 import { theme } from './src/infrastructure/theme';
@@ -53,18 +54,31 @@ export default function App() {
     );
   };
 
+  const tabs = [
+    { name: 'Restaurants', component: RestaurantsScreen },
+    { name: 'Map', component: MapScreen },
+    { name: 'Settings', component: SettingsScreen },
+  ];
+
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsContextProvider>
-          <NavigationContainer>
-            <BottomNavigator>
-              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-              <Tab.Screen name="Map" component={MapScreen} />
-              <Tab.Screen name="Settings" component={SettingsScreen} />
-            </BottomNavigator>
-          </NavigationContainer>
-        </RestaurantsContextProvider>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+            <NavigationContainer>
+              <BottomNavigator>
+                {!!tabs &&
+                  tabs.map((tab, i) => (
+                    <Tab.Screen
+                      key={i}
+                      name={tab.name}
+                      component={tab.component}
+                    />
+                  ))}
+              </BottomNavigator>
+            </NavigationContainer>
+          </RestaurantsContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

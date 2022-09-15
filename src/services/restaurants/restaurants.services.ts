@@ -33,13 +33,14 @@ interface IRestaurantResponse {
 }
 
 export const restaurantsRequest = (
-  location: keyof ICities = '37.7749295,-122.4194155'
+  location: keyof ICities = '51.219448,4.402464'
 ) => {
   return new Promise((resolve, reject) => {
     const city = cities[location];
     if (!city) {
       reject('not found');
     }
+
     resolve(city.results);
   });
 };

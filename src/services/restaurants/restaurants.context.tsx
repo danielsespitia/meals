@@ -1,12 +1,11 @@
 // Packages
-import { Camelize } from 'camelize-ts';
 import React, {
   FC,
   ReactNode,
   useState,
   createContext,
+  useContext,
   useEffect,
-  useMemo,
 } from 'react';
 import { IRestaurant } from '../../features/restaurants/types';
 
@@ -16,7 +15,8 @@ import {
   restaurantsTransform,
 } from './restaurants.services';
 
-type RestaurantState = Camelize<IRestaurant[]>;
+// Context
+import { LocationContext } from '../location/location.context';
 
 interface IRestaurantContextValue {
   restaurants: IRestaurant[];
@@ -35,6 +35,10 @@ export const RestaurantsContext = createContext(restaurantContextInitValue);
 export const RestaurantsContextProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  const locationContext = useContext(LocationContext);
+
+  const { location } = locationContext;
+
   const [restaurants, setRestaurants] = useState<IRestaurant[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -42,7 +46,7 @@ export const RestaurantsContextProvider: FC<{ children: ReactNode }> = ({
   const retrieveRestaurants = () => {
     setIsLoading(true);
     setTimeout(() => {
-      restaurantsRequest()
+      restaurantsRequest(location)
         .then(restaurantsTransform)
         .then((results) => {
           setIsLoading(false);

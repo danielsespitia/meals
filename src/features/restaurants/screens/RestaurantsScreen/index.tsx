@@ -14,7 +14,6 @@ import { IRestaurant } from '../../types';
 
 // Styles
 import { SafeAreaContainer } from './styles';
-import { colors } from '../../../../infrastructure/theme/colors';
 
 export const RestaurantsScreen: FC = () => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);

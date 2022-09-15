@@ -37,7 +37,7 @@ export const RestaurantInfoCard: FC<IRestaurantInfoCard> = ({ restaurant }) => {
     isClosedTemporarily,
   } = restaurant;
 
-  const ratingArray = Array.from(new Array(Math.floor(rating)));
+  const ratingArray = rating && Array.from(new Array(Math.floor(rating)));
 
   return (
     <Card elevation={5}>
@@ -46,10 +46,13 @@ export const RestaurantInfoCard: FC<IRestaurantInfoCard> = ({ restaurant }) => {
         <Text variant="label">{name}</Text>
         <IconsContainer>
           <Rating>
-            {!!ratingArray &&
+            {!!ratingArray ? (
               ratingArray.map((e, i) => (
                 <SvgXml key={i} xml={star} width={20} height={20} />
-              ))}
+              ))
+            ) : (
+              <Text>No Rating Available</Text>
+            )}
           </Rating>
           <OpeningTimes>
             {isClosedTemporarily && (
