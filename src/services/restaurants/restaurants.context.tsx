@@ -17,6 +17,7 @@ import {
 
 // Context
 import { LocationContext } from '../location/location.context';
+import { ICities } from './mock';
 
 interface IRestaurantContextValue {
   restaurants: IRestaurant[];
@@ -43,7 +44,7 @@ export const RestaurantsContextProvider: FC<{ children: ReactNode }> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const retrieveRestaurants = () => {
+  const retrieveRestaurants = (location: keyof ICities) => {
     setIsLoading(true);
     setTimeout(() => {
       restaurantsRequest(location)
@@ -56,12 +57,12 @@ export const RestaurantsContextProvider: FC<{ children: ReactNode }> = ({
           setIsLoading(false);
           setError(err);
         });
-    }, 2000);
+    }, 500);
   };
 
   useEffect(() => {
-    retrieveRestaurants();
-  }, []);
+    retrieveRestaurants(location);
+  }, [location]);
 
   return (
     <RestaurantsContext.Provider value={{ restaurants, isLoading, error }}>

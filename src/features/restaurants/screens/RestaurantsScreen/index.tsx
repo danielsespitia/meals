@@ -24,6 +24,7 @@ export const RestaurantsScreen: FC = () => {
 
   return (
     <SafeAreaContainer>
+      <MySearchbar />
       {isLoading ? (
         // Refactor to styled component
         <View style={{ position: 'absolute', top: '50%', left: '50%' }}>
@@ -36,7 +37,6 @@ export const RestaurantsScreen: FC = () => {
         </View>
       ) : (
         <>
-          <MySearchbar />
           <FlatList
             data={restaurants}
             renderItem={renderItem}
