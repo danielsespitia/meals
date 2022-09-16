@@ -1,5 +1,5 @@
 // Packages
-import { FC, useState, useContext } from 'react';
+import { FC, useState, useContext, useEffect } from 'react';
 import { Searchbar } from 'react-native-paper';
 
 // Context
@@ -13,6 +13,10 @@ export const MySearchbar: FC = () => {
   const { search, keyword } = context;
 
   const [searchKeyword, setSearchKeyword] = useState<string>(keyword);
+
+  useEffect(() => {
+    search(searchKeyword);
+  }, []);
 
   return (
     <SearchContainer>

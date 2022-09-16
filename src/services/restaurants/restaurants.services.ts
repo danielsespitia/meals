@@ -32,9 +32,7 @@ interface IRestaurantResponse {
   vicinity: string;
 }
 
-export const restaurantsRequest = (
-  location: keyof ICities = '51.219448,4.402464'
-) => {
+export const restaurantsRequest = (location: keyof ICities) => {
   return new Promise((resolve, reject) => {
     const city = cities[location];
     if (!city) {
@@ -61,7 +59,8 @@ export const restaurantsTransform = (
         restaurant.icon ||
         'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png',
       photos: randomizedMockPhoto,
-      address: restaurant.address || '123 random street',
+      address:
+        restaurant.vicinity || 'No address available for this restaurant',
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
       rating: restaurant.rating,
       isClosedTemporarily: restaurant?.business_status === 'CLOSED_TEMPORARILY',

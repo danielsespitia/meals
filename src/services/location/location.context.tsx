@@ -1,5 +1,5 @@
 // Packages
-import React, { FC, ReactNode, useState } from 'react';
+import React, { FC, ReactNode, useState, useEffect } from 'react';
 import { ICities } from '../restaurants/mock';
 
 // Services
@@ -41,10 +41,12 @@ export const LocationContextProvider: FC<{ children: ReactNode }> = ({
   const onSearch = (searchKeyword: string) => {
     setIsLoading(true);
     setKeyword(searchKeyword);
+  };
 
-    if (!searchKeyword.length) return;
+  useEffect(() => {
+    if (!keyword.length) return;
 
-    locationRequest(searchKeyword.toLowerCase())
+    locationRequest(keyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
         setIsLoading(false);
@@ -54,7 +56,7 @@ export const LocationContextProvider: FC<{ children: ReactNode }> = ({
         setIsLoading(false);
         setError(err);
       });
-  };
+  }, [keyword]);
 
   return (
     <LocationContext.Provider

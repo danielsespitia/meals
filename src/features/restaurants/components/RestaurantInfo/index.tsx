@@ -47,7 +47,7 @@ export const RestaurantInfoCard: FC<IRestaurantInfoCard> = ({ restaurant }) => {
         <IconsContainer>
           <Rating>
             {!!ratingArray ? (
-              ratingArray.map((e, i) => (
+              ratingArray.map((_, i) => (
                 <SvgXml key={i} xml={star} width={20} height={20} />
               ))
             ) : (

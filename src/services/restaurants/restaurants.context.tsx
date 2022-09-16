@@ -46,6 +46,8 @@ export const RestaurantsContextProvider: FC<{ children: ReactNode }> = ({
 
   const retrieveRestaurants = (location: keyof ICities) => {
     setIsLoading(true);
+    setRestaurants([]);
+
     setTimeout(() => {
       restaurantsRequest(location)
         .then(restaurantsTransform)
@@ -61,7 +63,9 @@ export const RestaurantsContextProvider: FC<{ children: ReactNode }> = ({
   };
 
   useEffect(() => {
-    retrieveRestaurants(location);
+    if (location) {
+      retrieveRestaurants(location);
+    }
   }, [location]);
 
   return (
