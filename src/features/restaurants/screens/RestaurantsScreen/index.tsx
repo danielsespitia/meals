@@ -11,15 +11,30 @@ import { RestaurantsContext } from '../../../../services/restaurants/restaurants
 
 // Definitions
 import { IRestaurant } from '../../types';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // Styles
-import { SafeAreaContainer } from './styles';
+import { SafeAreaContainer } from '../../../../components/Spacer';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export const RestaurantsScreen: FC = () => {
+type RootStackParamList = {
+  Restaurants: undefined;
+};
+
+type Props = NativeStackScreenProps<RootStackParamList, 'Restaurants'>;
+
+export const RestaurantsScreen: FC<{ navigation: Props }> = ({
+  navigation,
+}) => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
 
   const renderItem: ListRenderItem<IRestaurant> = ({ item }) => (
-    <RestaurantInfoCard restaurant={item} />
+    <TouchableOpacity
+      // Type navigate method
+      onPress={() => navigation.navigate('Detail', { restaurant: item })}
+    >
+      <RestaurantInfoCard restaurant={item} />
+    </TouchableOpacity>
   );
 
   return (

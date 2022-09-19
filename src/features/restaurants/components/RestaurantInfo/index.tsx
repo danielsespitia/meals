@@ -16,8 +16,9 @@ import {
   open,
   star,
 } from './styles';
-import { Spacer } from '../../../../components';
-import { Text } from '../../../../components';
+// TODO: Check cycle warning
+import { Spacer } from '../../../../components/Spacer';
+import { Text } from '../../../../components/Typography';
 
 // Definitions
 import { IRestaurant } from '../../types';

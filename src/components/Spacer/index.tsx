@@ -1,8 +1,15 @@
 // Packages
 import React, { FC, ReactNode } from 'react';
 import styled, { useTheme } from 'styled-components/native';
+import { SafeAreaView, StatusBar } from 'react-native';
+
+// Definitions
 import { ITheme } from '../../infrastructure/definitions/ITheme';
 
+export const SafeAreaContainer = styled(SafeAreaView)`
+  flex: 1;
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`}
+`;
 interface sizes {
   small: number;
   medium: number;
@@ -52,7 +59,7 @@ interface ISpacer {
 }
 
 export const Spacer: FC<ISpacer> = ({ position, size, children }) => {
-  const theme = useTheme();
+  const theme = useTheme() as ITheme;
   const variant = getVariant(position, size, theme);
   return <SpacerView variant={variant}>{children}</SpacerView>;
 };
