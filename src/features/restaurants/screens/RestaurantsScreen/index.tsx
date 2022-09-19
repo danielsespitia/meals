@@ -2,20 +2,23 @@
 import React, { FC, useContext } from 'react';
 import { ActivityIndicator, Colors } from 'react-native-paper';
 import { View, FlatList, ListRenderItem } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // Components
-import { RestaurantInfoCard, MySearchbar } from '../../components';
+import {
+  RestaurantInfoCard,
+  MySearchbar,
+} from '~/features/restaurants/components';
 
 // Context
-import { RestaurantsContext } from '../../../../services/restaurants/restaurants.context';
+import { RestaurantsContext } from '~/services/restaurants/restaurants.context';
 
 // Definitions
-import { IRestaurant } from '../../types';
+import { IRestaurant } from '~/features/restaurants/types';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // Styles
-import { SafeAreaContainer } from '../../../../components/Spacer';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { SafeAreaContainer } from '~/components/Spacer';
 
 type RootStackParamList = {
   Restaurants: undefined;

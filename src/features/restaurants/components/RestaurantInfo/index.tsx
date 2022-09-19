@@ -7,7 +7,6 @@ import {
   Card,
   Cover,
   Info,
-  Title,
   IconsContainer,
   Rating,
   OpeningTimes,
@@ -17,11 +16,11 @@ import {
   star,
 } from './styles';
 // TODO: Check cycle warning
-import { Spacer } from '../../../../components/Spacer';
-import { Text } from '../../../../components/Typography';
+import { Spacer } from '~/components/Spacer';
+import { Text } from '~/components/Typography';
 
 // Definitions
-import { IRestaurant } from '../../types';
+import { IRestaurant } from '~/features/restaurants/types';
 
 interface IRestaurantInfoCard {
   restaurant: IRestaurant;

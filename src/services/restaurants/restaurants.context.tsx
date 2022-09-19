@@ -7,17 +7,17 @@ import React, {
   useContext,
   useEffect,
 } from 'react';
-import { IRestaurant } from '../../features/restaurants/types';
+import { IRestaurant } from '~/features/restaurants/types';
 
 // Services
 import {
   restaurantsRequest,
   restaurantsTransform,
-} from './restaurants.services';
+} from '~/services/restaurants/restaurants.services';
 
 // Context
-import { LocationContext } from '../location/location.context';
-import { ICities } from './mock';
+import { LocationContext } from '~/services/location/location.context';
+import { ICities } from '~/services/restaurants/mock';
 
 interface IRestaurantContextValue {
   restaurants: IRestaurant[];

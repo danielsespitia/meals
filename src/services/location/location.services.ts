@@ -2,8 +2,8 @@
 import camelize from 'camelize-ts';
 
 // Data & Definitions
-import { locations, ICity } from './location.mock';
-import { ICities } from '../restaurants/mock';
+import { locations, ICity } from '~/services/location/location.mock';
+import { ICities } from '~/services/restaurants/mock';
 
 export const locationRequest = (searchTerm: string): Promise<ICity> => {
   return new Promise((resolve, reject) => {

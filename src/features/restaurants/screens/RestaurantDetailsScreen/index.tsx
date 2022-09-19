@@ -4,11 +4,11 @@ import { ScrollView } from 'react-native';
 import { List } from 'react-native-paper';
 
 // Components
-import { SafeAreaContainer } from '../../../../components/Spacer';
-import { RestaurantInfoCard } from '../../components';
+import { SafeAreaContainer } from '~/components/Spacer';
+import { RestaurantInfoCard } from '~/features/restaurants/components';
 
 // Type route prop (React Navigator library)
-export const RestaurantDetailsScreen = ({ route }) => {
+export const RestaurantDetailsScreen = ({ route }: { route: any }) => {
   const { restaurant } = route.params;
 
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);

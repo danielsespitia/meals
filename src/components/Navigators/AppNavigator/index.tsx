@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
 // Screens
-import { RestaurantsNavigator } from '../RestaurantNavigator';
+import { RestaurantsNavigator } from '~/components/Navigators';
 
 export const AppNavigator: FC = () => {
   const Tab = createBottomTabNavigator();

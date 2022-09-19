@@ -3,7 +3,7 @@ import { FC, useState, useContext, useEffect } from 'react';
 import { Searchbar } from 'react-native-paper';
 
 // Context
-import { LocationContext } from '../../../../services/location/location.context';
+import { LocationContext } from '~/services/location/location.context';
 
 // Styles
 import { SearchContainer } from './styles';

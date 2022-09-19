@@ -1,9 +1,12 @@
 // Packages
 import React, { FC, ReactNode, useState, useEffect } from 'react';
-import { ICities } from '../restaurants/mock';
+import { ICities } from '~/services/restaurants/mock';
 
 // Services
-import { locationRequest, locationTransform } from './location.services';
+import {
+  locationRequest,
+  locationTransform,
+} from '~/services/location/location.services';
 
 interface ILocationContextValue {
   isLoading: boolean;

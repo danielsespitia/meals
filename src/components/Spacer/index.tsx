@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native';
 import { SafeAreaView, StatusBar } from 'react-native';
 
 // Definitions
-import { ITheme } from '../../infrastructure/definitions/ITheme';
+import { ITheme } from '~/infrastructure/definitions/ITheme';
 
 export const SafeAreaContainer = styled(SafeAreaView)`
   flex: 1;

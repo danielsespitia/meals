@@ -2,10 +2,10 @@
 import camelize, { Camelize } from 'camelize-ts';
 
 // Data
-import { cities, mockImages, ICities } from './mock';
+import { cities, mockImages, ICities } from '~/services/restaurants/mock';
 
 // Definitions
-import { IRestaurant } from '../../features/restaurants/types';
+import { IRestaurant } from '~/features/restaurants/types';
 
 interface IRestaurantResponse {
   business_status?: string;
